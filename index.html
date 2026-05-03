@@ -1,0 +1,407 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; min-height: 15.0px}
+    span.s1 {font: 13.0px 'Zapf Dingbats'}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="es"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1">&lt;title&gt;Encuesta de Aplicación — Camila Clausen&lt;/title&gt;</p>
+<p class="p1">&lt;link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--crimson: #9b2800;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--crimson-dark: #7a1f00;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--gold: #ffce88;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--gold-light: #fff3d6;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--white: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--off-white: #fdf9f7;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--text-dark: #1a0800;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--text-mid: #4a2a1a;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--text-muted: #7a5a4a;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--border: rgba(155, 40, 0, 0.15);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>* { box-sizing: border-box; margin: 0; padding: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>body { font-family: 'Open Sans', sans-serif; background: var(--off-white); color: var(--text-dark); min-height: 100vh; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.wrapper { max-width: 680px; margin: 0 auto; padding: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.header { background: var(--crimson); padding: 2.5rem 2rem 2rem; text-align: center; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.header-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; font-weight: 500; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.header h1 { font-family: Georgia, 'Times New Roman', serif; font-size: 2rem; font-weight: 400; font-style: italic; color: var(--white); line-height: 1.2; margin-bottom: 0.5rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.header-sub { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.progress-bar-wrap { background: var(--crimson-dark); height: 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.progress-bar { height: 4px; background: var(--gold); transition: width 0.5s ease; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.step-indicator { background: var(--crimson); padding: 0.5rem 2rem 1rem; display: flex; gap: 6px; justify-content: center; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.step-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: background 0.3s; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.step-dot.active { background: var(--gold); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.step-dot.done { background: rgba(255,255,255,0.6); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.form-body { padding: 2rem; background: var(--white); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.step { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.step.active { display: block; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.section-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--crimson); font-weight: 600; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.field-group { margin-bottom: 1.25rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>label { display: block; font-size: 13px; font-weight: 500; color: var(--text-mid); margin-bottom: 0.4rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>label span.req { color: var(--crimson); margin-left: 2px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>input[type="text"], input[type="email"], input[type="url"], textarea { width: 100%; padding: 0.65rem 0.9rem; border: 1px solid var(--border); border-radius: 6px; font-family: 'Open Sans', sans-serif; font-size: 14px; color: var(--text-dark); background: var(--white); transition: border-color 0.2s; outline: none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>input:focus, textarea:focus { border-color: var(--crimson); box-shadow: 0 0 0 3px rgba(155,40,0,0.08); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>textarea { resize: vertical; min-height: 90px; line-height: 1.6; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.radio-group { display: flex; flex-direction: column; gap: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.radio-option { display: flex; align-items: center; gap: 10px; padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: all 0.2s; font-size: 14px; color: var(--text-dark); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.radio-option:hover { border-color: var(--crimson); background: var(--gold-light); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.radio-option input[type="radio"] { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.radio-option.selected { border-color: var(--crimson); background: var(--gold-light); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.radio-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.radio-option.selected .radio-dot { border-color: var(--crimson); background: var(--crimson); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.radio-option.selected .radio-dot::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: white; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-back { font-size: 13px; color: var(--text-muted); background: none; border: none; cursor: pointer; padding: 0.5rem 0; font-family: 'Open Sans', sans-serif; text-decoration: underline; text-underline-offset: 3px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-back:hover { color: var(--crimson); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-next { background: var(--crimson); color: white; border: none; padding: 0.75rem 2rem; border-radius: 6px; font-size: 14px; font-family: 'Open Sans', sans-serif; font-weight: 600; cursor: pointer; letter-spacing: 0.05em; transition: background 0.2s; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-next:hover { background: var(--crimson-dark); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-next:disabled { background: #ccc; cursor: not-allowed; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.step-meta { font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 1.5rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.thank-you { text-align: center; padding: 3rem 2rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ty-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--gold-light); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 24px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ty-title { font-family: Georgia, 'Times New Roman', serif; font-size: 1.6rem; font-weight: 400; font-style: italic; color: var(--crimson); margin-bottom: 0.75rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ty-text { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 420px; margin: 0 auto; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.error-msg { font-size: 12px; color: var(--crimson); margin-top: 4px; display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.field-group.has-error input, .field-group.has-error textarea { border-color: var(--crimson); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.field-group.has-error .error-msg { display: block; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.api-error { background: #fff0ee; border: 1px solid rgba(155,40,0,0.3); border-radius: 6px; padding: 0.75rem 1rem; font-size: 13px; color: var(--crimson); margin-top: 1rem; display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>@media (max-width: 480px) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.form-body { padding: 1.5rem; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.header { padding: 2rem 1.5rem 1.5rem; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.header h1 { font-size: 1.5rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1">&lt;div class="wrapper"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="header-eyebrow"&gt;Camila Clausen&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Encuesta de Aplicación&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="header-sub"&gt;Cuéntame sobre ti y tu negocio para que podamos&lt;br&gt;ver si somos el match indicado.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="progress-bar-wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="progress-bar" id="progressBar" style="width:25%"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="step-indicator" id="stepIndicator"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="form-body"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- STEP 1: Datos de contacto --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="step active" data-step="1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="step-meta"&gt;Paso 1 de 4&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="section-label"&gt;Datos de contacto&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group" id="fg-nombre"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Nombre completo &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="text" id="nombre" placeholder="Tu nombre completo"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="error-msg"&gt;Este campo es obligatorio.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group" id="fg-email"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Email &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="email" id="email" placeholder="tu@email.com"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="error-msg"&gt;Ingresa un email válido.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group" id="fg-whatsapp"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;WhatsApp &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="text" id="whatsapp" placeholder="+1 555 000 0000 (incluye código de país)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="error-msg"&gt;Este campo es obligatorio.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Página web&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="url" id="web" placeholder="https://tudominio.com"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Instagram&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="text" id="instagram" placeholder="@usuario"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;LinkedIn&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="text" id="linkedin" placeholder="@usuario"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Otra red social que uses activamente&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="text" id="otra_red" placeholder="@usuario + plataforma (ej. @nombre en TikTok)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="nav"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn-next" onclick="goTo(2)"&gt;Siguiente →&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- STEP 2: Tu negocio --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="step" data-step="2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="step-meta"&gt;Paso 2 de 4&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="section-label"&gt;Tu negocio&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group" id="fg-tipo_negocio"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;¿Tu negocio es de productos o servicios? &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="radio-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'tipo_negocio')"&gt;&lt;input type="radio" name="tipo_negocio" value="Productos"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;Productos&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'tipo_negocio')"&gt;&lt;input type="radio" name="tipo_negocio" value="Servicios"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;Servicios&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'tipo_negocio')"&gt;&lt;input type="radio" name="tipo_negocio" value="Ambos"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;Ambos&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="error-msg"&gt;Selecciona una opción.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group" id="fg-descripcion"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Descríbeme brevemente tu negocio &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;textarea id="descripcion" placeholder="Industria, perfil de cliente, lo que vendes y cómo están estructurados tus servicios / productos."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="error-msg"&gt;Este campo es obligatorio.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group" id="fg-facturacion"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;¿Cuál es tu facturación anual aproximada? &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="radio-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'facturacion')"&gt;&lt;input type="radio" name="facturacion" value="Menos de $80,000 USD"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;Menos de $80,000 USD&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'facturacion')"&gt;&lt;input type="radio" name="facturacion" value="$80,000 – $200,000 USD"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;$80,000 – $200,000 USD&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'facturacion')"&gt;&lt;input type="radio" name="facturacion" value="$200,000 – $1,000,000 USD"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;$200,000 – $1,000,000 USD&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'facturacion')"&gt;&lt;input type="radio" name="facturacion" value="Más de $1M USD"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;Más de $1M USD&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="error-msg"&gt;Selecciona una opción.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="nav"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn-back" onclick="goTo(1)"&gt;← Volver&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn-next" onclick="goTo(3)"&gt;Siguiente →&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- STEP 3: Tu momento actual --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="step" data-step="3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="step-meta"&gt;Paso 3 de 4&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="section-label"&gt;Tu momento actual&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group" id="fg-vision"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;¿Cuál es tu visión para los próximos 6 meses — para tu negocio y tu vida? &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;textarea id="vision" placeholder="Cuéntame qué quieres lograr..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="error-msg"&gt;Este campo es obligatorio.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group" id="fg-aguja"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;¿Qué es eso que sientes que, si lo resuelves, mueve la aguja de tu negocio al siguiente nivel? &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;textarea id="aguja" placeholder="Ese obstáculo o punto de inflexión clave..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="error-msg"&gt;Este campo es obligatorio.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group" id="fg-compromiso"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;¿Estás comprometida con el trabajo y la inversión — en tiempo, energía y recursos — que tu siguiente evolución requiere? &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="radio-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'compromiso')"&gt;&lt;input type="radio" name="compromiso" value="Sí, completamente comprometida"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;Sí, completamente comprometida&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'compromiso')"&gt;&lt;input type="radio" name="compromiso" value="Sí, aunque tengo algunas dudas"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;Sí, aunque tengo algunas dudas&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'compromiso')"&gt;&lt;input type="radio" name="compromiso" value="Todavía lo estoy evaluando"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;Todavía lo estoy evaluando&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="error-msg"&gt;Selecciona una opción.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="nav"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn-back" onclick="goTo(2)"&gt;← Volver&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn-next" onclick="goTo(4)"&gt;Siguiente →&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- STEP 4: Inversión --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="step" data-step="4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="step-meta"&gt;Paso 4 de 4&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="section-label"&gt;Inversión y siguiente paso&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group" id="fg-servicio"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;¿Cuál de los servicios se alinea a tu momento actual? &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="radio-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'servicio')"&gt;&lt;input type="radio" name="servicio" value="Sesión de Planeamiento Estratégico (2h)"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;Sesión de Planeamiento Estratégico (2h)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'servicio')"&gt;&lt;input type="radio" name="servicio" value="Acompañamiento Empresaria Audaz 3 meses"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;Acompañamiento Empresaria Audaz 3 meses&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'servicio')"&gt;&lt;input type="radio" name="servicio" value="Ambos / No estoy segura aún"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;Ambos / No estoy segura aún&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="error-msg"&gt;Selecciona una opción.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group" id="fg-inversion"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;¿Cuánto estás dispuesta a invertir en tu transformación? &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="radio-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'inversion')"&gt;&lt;input type="radio" name="inversion" value="Hasta $500 USD"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;Hasta $500 USD&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'inversion')"&gt;&lt;input type="radio" name="inversion" value="$500 – $1,000 USD"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;$500 – $1,000 USD&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'inversion')"&gt;&lt;input type="radio" name="inversion" value="$1,000 – $3,000 USD"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;$1,000 – $3,000 USD&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="error-msg"&gt;Selecciona una opción.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="field-group" id="fg-inicio"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;¿Cuándo estarías lista para empezar? &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="radio-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'inicio')"&gt;&lt;input type="radio" name="inicio" value="¡Mañana!"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;¡Mañana!&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'inicio')"&gt;&lt;input type="radio" name="inicio" value="En un par de semanas"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;En un par de semanas&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="radio-option" onclick="selectRadio(this,'inicio')"&gt;&lt;input type="radio" name="inicio" value="El próximo mes"&gt;&lt;div class="radio-dot"&gt;&lt;/div&gt;El próximo mes&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="error-msg"&gt;Selecciona una opción.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="api-error" id="apiError"&gt;Hubo un error al enviar. Por favor intenta nuevamente.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="nav"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn-back" onclick="goTo(3)"&gt;← Volver&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn-next" id="btnSubmit" onclick="submitForm()"&gt;Enviar aplicación&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- THANK YOU --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="step" data-step="5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="thank-you"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="ty-icon"&gt;<span class="s1">✦</span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="ty-title"&gt;Aplicación recibida&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="ty-text"&gt;Gracias por tomarte el tiempo de compartir tu historia. Revisaré tu aplicación con atención y estaré en contacto contigo pronto.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// ══════════════════════════════════════════════════</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// ★ REEMPLAZA ESTOS DOS VALORES ANTES DE PUBLICAR</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const MAILERLITE_API_KEY = 'Content-Type: application/json</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Accept: application/json';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const MAILERLITE_GROUP_ID = '186416148445660928;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// ══════════════════════════════════════════════════</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const totalSteps = 4;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let current = 1;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function buildDots() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const ind = document.getElementById('stepIndicator');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ind.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>for (let i = 1; i &lt;= totalSteps; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const d = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>d.className = 'step-dot' + (i === current ? ' active' : (i &lt; current ? ' done' : ''));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>ind.appendChild(d);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function updateProgress(step) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const pct = step &gt; totalSteps ? 100 : Math.round((step / totalSteps) * 100);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('progressBar').style.width = pct + '%';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function showStep(n) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.querySelectorAll('.step').forEach(s =&gt; s.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.querySelector('[data-step="' + n + '"]').classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>current = n;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>buildDots();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>updateProgress(n);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.scrollTo(0, 0);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function selectRadio(el, name) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.querySelectorAll('[name="' + name + '"]').forEach(r =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>r.closest('.radio-option').classList.remove('selected');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>el.classList.add('selected');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>el.querySelector('input[type="radio"]').checked = true;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const fg = el.closest('[id^="fg-"]');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (fg) fg.classList.remove('has-error');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function val(id) { const e = document.getElementById(id); return e ? e.value.trim() : ''; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>function radio(name) { const c = document.querySelector('[name="' + name + '"]:checked'); return c ? c.value : ''; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function validateStep(n) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let ok = true;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function chkText(id, fgId) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const fg = document.getElementById(fgId);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (fg) { if (!val(id)) { fg.classList.add('has-error'); ok = false; } else fg.classList.remove('has-error'); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function chkEmail(id, fgId) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const fg = document.getElementById(fgId);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (fg) { const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val(id)); if (!valid) { fg.classList.add('has-error'); ok = false; } else fg.classList.remove('has-error'); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function chkRadio(name, fgId) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const fg = document.getElementById(fgId);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (fg) { if (!radio(name)) { fg.classList.add('has-error'); ok = false; } else fg.classList.remove('has-error'); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (n === 1) { chkText('nombre','fg-nombre'); chkEmail('email','fg-email'); chkText('whatsapp','fg-whatsapp'); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (n === 2) { chkRadio('tipo_negocio','fg-tipo_negocio'); chkText('descripcion','fg-descripcion'); chkRadio('facturacion','fg-facturacion'); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (n === 3) { chkText('vision','fg-vision'); chkText('aguja','fg-aguja'); chkRadio('compromiso','fg-compromiso'); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (n === 4) { chkRadio('servicio','fg-servicio'); chkRadio('inversion','fg-inversion'); chkRadio('inicio','fg-inicio'); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return ok;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function goTo(n) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (n &gt; current &amp;&amp; !validateStep(current)) return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>showStep(n);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>async function submitForm() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!validateStep(4)) return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const btn = document.getElementById('btnSubmit');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const errBox = document.getElementById('apiError');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>btn.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>btn.textContent = 'Enviando...';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>errBox.style.display = 'none';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const payload = {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>email: val('email'),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>fields: {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>name: val('nombre'),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>whatsapp: val('whatsapp'),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>pagina_web: val('web'),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>instagram: val('instagram'),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>linkedin: val('linkedin'),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>otra_red_social: val('otra_red'),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>tipo_negocio: radio('tipo_negocio'),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>descripcion_negocio: val('descripcion'),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>facturacion_anual: radio('facturacion'),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>vision_6_meses: val('vision'),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>mueve_la_aguja: val('aguja'),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>compromiso: radio('compromiso'),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>servicio_interes: radio('servicio'),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>inversion_dispuesta: radio('inversion'),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>cuando_empezar: radio('inicio')</p>
+<p class="p1"><span class="Apple-converted-space">      </span>},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>groups: [186416148445660928],</p>
+<p class="p1"><span class="Apple-converted-space">      </span>status: 'active'</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const res = await fetch('https://connect.mailerlite.com/api/subscribers', {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>method: 'POST',</p>
+<p class="p1"><span class="Apple-converted-space">        </span>headers: {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>'Content-Type': 'application/json',</p>
+<p class="p1"><span class="Apple-converted-space">          </span>'Authorization': 'Bearer ' + Content-Type: application/json</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Accept: application/json,</p>
+<p class="p1"><span class="Apple-converted-space">          </span>'Accept': 'application/json'</p>
+<p class="p1"><span class="Apple-converted-space">        </span>},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body: JSON.stringify(payload)</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (res.ok || res.status === 201 || res.status === 200) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showStep(5);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const data = await res.json();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>console.error('MailerLite error:', data);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>errBox.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.textContent = 'Enviar aplicación';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} catch (err) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>console.error('Network error:', err);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>errBox.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.textContent = 'Enviar aplicación';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>buildDots();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>updateProgress(1);</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
