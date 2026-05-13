@@ -1,777 +1,401 @@
 <!DOCTYPE html>
-
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Empresaria Audaz — Camila Clausen</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
 <style>
-
 :root{--c:#9b2800;--cd:#7a1f00;--g:#ffce88;--gl:#fff3d6;--w:#fff;--ow:#fdf9f7;--td:#1a0800;--tm:#4a2a1a;--tt:#7a5a4a;--b:rgba(155,40,0,.15)}
-
 *{box-sizing:border-box;margin:0;padding:0}
-
 body{font-family:'Open Sans',sans-serif;background:var(--ow);color:var(--td);min-height:100vh}
-
 .wrap{max-width:680px;margin:0 auto}
-
 .hdr{background:var(--c);padding:2.5rem 2rem 2rem;text-align:center}
-
 .ey{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:.75rem;font-weight:500}
-
 h1{font-family:Georgia,serif;font-size:2rem;font-weight:400;font-style:italic;color:var(--w);line-height:1.2;margin-bottom:.5rem}
-
 .hs{font-size:13px;color:rgba(255,255,255,.75);line-height:1.7;max-width:480px;margin:0 auto}
-
 .pbw{background:var(--cd);height:4px}
-
 .pb{height:4px;background:var(--g);transition:width .5s ease}
-
 .si{background:var(--c);padding:.5rem 2rem 1rem;display:flex;gap:6px;justify-content:center}
-
 .sd{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);transition:background .3s}
-
 .sd.a{background:var(--g)}.sd.d{background:rgba(255,255,255,.6)}
-
 .fb{padding:2rem;background:var(--w)}
-
 .step{display:none}.step.on{display:block}
-
 .sl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--c);font-weight:600;margin-bottom:1.5rem;padding-bottom:.5rem;border-bottom:1px solid var(--b)}
-
 .fg{margin-bottom:1.25rem}
-
 .fg label.lbl{display:block;font-size:13px;font-weight:500;color:var(--tm);margin-bottom:.4rem;line-height:1.5}
-
 .req{color:var(--c)}
-
 .fg input,.fg textarea{width:100%;padding:.65rem .9rem;border:1px solid var(--b);border-radius:6px;font-family:'Open Sans',sans-serif;font-size:14px;color:var(--td);background:var(--w);transition:border-color .2s;outline:none}
-
 .fg input:focus,.fg textarea:focus{border-color:var(--c);box-shadow:0 0 0 3px rgba(155,40,0,.08)}
-
 textarea{resize:vertical;min-height:100px;line-height:1.6}
-
 .rg{display:flex;flex-direction:column;gap:8px}
-
 .ro{display:flex;align-items:flex-start;gap:10px;padding:.75rem 1rem;border:1px solid var(--b);border-radius:6px;cursor:pointer;transition:all .2s;font-size:14px;color:var(--td);user-select:none;line-height:1.4}
-
 .ro:hover,.ro.sel{border-color:var(--c);background:var(--gl)}
-
 .rd{width:16px;height:16px;border-radius:50%;border:2px solid var(--b);flex-shrink:0;transition:all .2s;display:flex;align-items:center;justify-content:center;margin-top:2px}
-
 .ro.sel .rd{border-color:var(--c);background:var(--c)}
-
 .ro.sel .rd:after{content:'';width:5px;height:5px;border-radius:50%;background:#fff;display:block}
-
 .nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--b)}
-
 .bb{font-size:13px;color:var(--tt);background:none;border:none;cursor:pointer;padding:.5rem 0;font-family:'Open Sans',sans-serif;text-decoration:underline}
-
 .bn{background:var(--c);color:#fff;border:none;padding:.75rem 2rem;border-radius:6px;font-size:14px;font-family:'Open Sans',sans-serif;font-weight:600;cursor:pointer;transition:background .2s}
-
 .bn:hover{background:var(--cd)}
-
 .bn:disabled{background:#ccc;cursor:not-allowed}
-
 .sm{font-size:12px;color:var(--tt);text-align:center;margin-bottom:1.5rem}
-
 .em{font-size:12px;color:var(--c);margin-top:4px;display:none}
-
 .fg.err input,.fg.err textarea{border-color:var(--c)}
-
 .fg.err .em{display:block}
-
 .ae{background:#fff0ee;border:1px solid rgba(155,40,0,.3);border-radius:6px;padding:.75rem 1rem;font-size:13px;color:var(--c);margin-top:1rem;display:none}
-
 .ty{text-align:center;padding:3rem 2rem}
-
 .ti{width:56px;height:56px;border-radius:50%;background:var(--gl);border:2px solid var(--g);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:24px}
-
 .tt2{font-family:Georgia,serif;font-size:1.6rem;font-weight:400;font-style:italic;color:var(--c);margin-bottom:.75rem}
-
 .tp{font-size:15px;color:var(--tm);line-height:1.7;max-width:420px;margin:0 auto}
-
 </style>
-
 </head>
-
 <body>
-
 <div class="wrap">
 
- 
-
 <div class="hdr">
-
   <div class="ey">Camila Clausen</div>
-
-  <h1>Empresaria Audaz</h1>
-
-  <p class="hs">Acompañamiento 1:1 · Para acompañarte y saber que estamos listas, te invito a contestar las siguientes preguntas.</p>
-
+  <h1>Aplicación Empresaria Audaz</h1>
+  <p class="hs">Cada año acompaño a un grupo selecto de empresarias. Estas preguntas me permiten entender tu contexto y tu visión para evaluar si es el momento de trabajar juntas.</p>
 </div>
 
- 
-
 <div class="pbw"><div class="pb" id="pb" style="width:25%"></div></div>
-
 <div class="si" id="si"></div>
-
- 
 
 <div class="fb">
 
- 
-
 <!-- PASO 1: Datos de contacto -->
-
 <div class="step on" id="s1">
-
   <div class="sm">Paso 1 de 4</div>
-
   <div class="sl">Datos de contacto</div>
 
- 
-
   <div class="fg" id="fnb">
-
     <label class="lbl">¿Cuál es tu nombre completo? <span class="req">*</span></label>
-
     <input type="text" id="nb" autocomplete="off" placeholder="Tu nombre completo">
-
     <div class="em">Obligatorio.</div>
-
   </div>
-
- 
 
   <div class="fg" id="fem">
-
     <label class="lbl">¿Cuál es tu email? <span class="req">*</span></label>
-
     <input type="text" id="em" autocomplete="off" placeholder="hola@tuempresa.com">
-
     <div class="em">Email inválido.</div>
-
   </div>
-
- 
 
   <div class="fg" id="fwa">
-
     <label class="lbl">¿Cuál es tu WhatsApp? <span class="req">*</span> <small style="font-weight:400;color:#7a5a4a">(incluye código de país)</small></label>
-
     <input type="text" id="wa" autocomplete="off" placeholder="+1 555 000 0000">
-
     <div class="em">Obligatorio.</div>
-
   </div>
 
- 
+  <div class="fg">
+    <label class="lbl">¿Cuál es tu Instagram y/o web de tu negocio?</label>
+    <input type="text" id="igweb" autocomplete="off" placeholder="@usuario o https://tunegocio.com">
+  </div>
 
   <div class="fg" id="fca">
-
     <label class="lbl">¿Cuál es tu cargo en tu negocio? <span class="req">*</span></label>
-
     <div class="rg">
-
       <div class="ro" id="ca1"><div class="rd"></div>Socia-fundadora o CEO</div>
-
       <div class="ro" id="ca2"><div class="rd"></div>C-Level, Directora o VP</div>
-
       <div class="ro" id="ca3"><div class="rd"></div>Gerente Intermedio u otra</div>
-
     </div>
-
     <div class="em">Selecciona una opción.</div>
-
   </div>
-
- 
 
   <div class="nav"><span></span><button class="bn" id="b1">Siguiente →</button></div>
-
 </div>
-
- 
 
 <!-- PASO 2: Tu negocio -->
-
 <div class="step" id="s2">
-
   <div class="sm">Paso 2 de 4</div>
-
   <div class="sl">Tu negocio</div>
 
- 
-
   <div class="fg" id="ftn">
-
     <label class="lbl">¿Tu negocio es de productos o servicios? <span class="req">*</span></label>
-
     <div class="rg">
-
       <div class="ro" id="tn1"><div class="rd"></div>Producto</div>
-
       <div class="ro" id="tn2"><div class="rd"></div>Servicios</div>
-
       <div class="ro" id="tn3"><div class="rd"></div>Ambos</div>
-
     </div>
-
     <div class="em">Selecciona una opción.</div>
-
   </div>
-
- 
 
   <div class="fg" id="fdn">
-
     <label class="lbl">¿Nos cuentas brevemente sobre tu negocio? <span class="req">*</span><br><small style="font-weight:400;color:#7a5a4a">Nombre del negocio, industria, perfil de cliente, lo que vendes y cómo están estructurados tus servicios / productos.</small></label>
-
     <textarea id="dn" placeholder="Cuéntanos sobre tu negocio..."></textarea>
-
     <div class="em">Obligatorio.</div>
-
   </div>
-
- 
 
   <div class="fg" id="ffa">
-
     <label class="lbl">¿Cuál es tu facturación anual aproximada? <span class="req">*</span></label>
-
     <div class="rg">
-
       <div class="ro" id="fa1"><div class="rd"></div>Menos de $80,000 USD</div>
-
       <div class="ro" id="fa2"><div class="rd"></div>$80,000 – $200,000 USD</div>
-
       <div class="ro" id="fa3"><div class="rd"></div>$200,000 – $1,000,000 USD</div>
-
       <div class="ro" id="fa4"><div class="rd"></div>Más de $1M USD</div>
-
     </div>
-
     <div class="em">Selecciona una opción.</div>
-
   </div>
-
- 
 
   <div class="nav">
-
     <button class="bb" id="b2b">← Volver</button>
-
     <button class="bn" id="b2">Siguiente →</button>
-
   </div>
-
 </div>
-
- 
 
 <!-- PASO 3: Tu momento actual -->
-
 <div class="step" id="s3">
-
   <div class="sm">Paso 3 de 4</div>
-
   <div class="sl">Tu momento actual</div>
 
- 
-
   <div class="fg" id="fag">
-
     <label class="lbl">¿Qué es eso que sientes que, si lo resuelves, mueve la aguja de ti y/o tu negocio al siguiente nivel? <span class="req">*</span></label>
-
     <textarea id="ag" placeholder="Ese obstáculo o punto de inflexión clave..."></textarea>
-
     <div class="em">Obligatorio.</div>
-
   </div>
-
- 
 
   <div class="fg" id="fex">
-
     <label class="lbl">¿Cómo defines el éxito al terminar los 3 meses? <span class="req">*</span></label>
-
     <textarea id="ex" placeholder="Describe cómo te verías al finalizar el acompañamiento..."></textarea>
-
     <div class="em">Obligatorio.</div>
-
   </div>
-
- 
 
   <div class="nav">
-
     <button class="bb" id="b3b">← Volver</button>
-
     <button class="bn" id="b3">Siguiente →</button>
-
   </div>
-
 </div>
 
- 
-
 <!-- PASO 4: Inversión -->
-
 <div class="step" id="s4">
-
   <div class="sm">Paso 4 de 4</div>
-
   <div class="sl">Inversión y siguiente paso</div>
 
- 
-
   <div class="fg" id="fin">
-
     <label class="lbl">El Acompañamiento 1:1 durante 12 semanas requiere una inversión de USD 3,000 donde vas a experimentar mejoras en tu rendimiento, relaciones y bienestar. Si eres aceptada, ¿estás lista para dar este paso e iniciar el acompañamiento? <span class="req">*</span></label>
-
     <div class="rg">
-
       <div class="ro" id="in1"><div class="rd"></div>Sí, estoy lista para invertir USD 3,000 para el Acompañamiento de 12 semanas</div>
-
       <div class="ro" id="in2"><div class="rd"></div>Sí, puedo invertir USD 3,000 en plan de pagos</div>
-
       <div class="ro" id="in3"><div class="rd"></div>En este momento no me es posible invertir</div>
-
     </div>
-
     <div class="em">Selecciona una opción.</div>
-
   </div>
-
- 
 
   <div class="fg" id="fic">
-
     <label class="lbl">¿Cuándo estarías lista para empezar? <span class="req">*</span></label>
-
     <div class="rg">
-
       <div class="ro" id="ic1"><div class="rd"></div>¡Mañana!</div>
-
       <div class="ro" id="ic2"><div class="rd"></div>En un par de semanas</div>
-
       <div class="ro" id="ic3"><div class="rd"></div>El próximo mes</div>
-
     </div>
-
     <div class="em">Selecciona una opción.</div>
-
   </div>
-
- 
 
   <div class="ae" id="ae">Error al enviar. Verifica tu conexión e intenta nuevamente.</div>
 
- 
-
   <div class="nav">
-
     <button class="bb" id="b4b">← Volver</button>
-
     <button class="bn" id="b4">Enviar aplicación</button>
-
   </div>
-
 </div>
-
- 
 
 <!-- ÉXITO -->
-
 <div class="step" id="s5">
-
   <div class="ty">
-
-    <div class="ti">✦</div>
-
-    <div class="tt2">Aplicación recibida</div>
-
-    <p class="tp">Gracias por tomarte el tiempo de compartir tu historia. Revisaré tu aplicación con atención y estaré en contacto contigo pronto.</p>
-
+    <div class="ti">🔥</div>
+    <div class="tt2">¡Aplicación enviada!</div>
+    <p class="tp">Celebro contigo este paso. Apostar por ti, por tu visión, por la empresaria que viniste a encarnar — esa decisión ya está moviendo algo adentro tuyo.<br><br>En 1 - 3 días te estaré contactando después de revisar tu aplicación.<br><br>Mientras tanto — mano al pecho, respira profundo, y celebra. Tu intención ya está en movimiento.<br><br>— Camila 🤍</p>
   </div>
-
 </div>
 
- 
-
 </div><!-- /fb -->
-
 </div><!-- /wrap -->
 
- 
-
 <script>
-
 // ─────────────────────────────────────────────
-
 // ✏️ CONFIGURACIÓN — edita solo estas líneas
-
 // ─────────────────────────────────────────────
-
 var AK = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYTNlNjNjODBlNWI4YTVlMDY1N2Q5OTViZDg3MWZkYzM4MGJlNDU5OTMyZWI3OWY0ZGI5NjM4MDY5MWZmMjQ5ZWMzMDUwZDRhNDUyMzRiYWYiLCJpYXQiOjE3Nzc4MzI4NDAuMjU3NzQ2LCJuYmYiOjE3Nzc4MzI4NDAuMjU3NzQ4LCJleHAiOjQ5MzM1MDY0NDAuMjUzNDU5LCJzdWIiOiIyMzExMTIzIiwic2NvcGVzIjpbXX0.RThWAfhZyqRPzNx9vIVpMBlXZy7alwF6oZvSB2pVvIOaJ7OcpxB8WgwgORsvyTja-ajeZR196wvtnbPPfw3EDmjtfAx8djui2IHWx1bIQ7m-0FsigzBlQh9UCZuIwhC7nFwkwrP1UZNZ6bQ19rc7K3oeXc7l3rXqXSPQR1Y5P4UJxUfJ13BBBmQuXli4WLoJQ1c3IAhZO-o_u1nWnazLcALd9WwHvXTcD-uZvKT5wkTHHY_eWplHt0caXrc8iPwoDLVBrKWDQSSQhVsV9U5tP-xjNEg1pvfDkoWzdeJUCup7PLz3lBkIzEPjeJvZXzvJxzmkEWaV1Amn21gBoi3TZSM1XWG-g-qNmvpSNOMCrPQk5nprEqlv3FbfkXO3y3w5dp1a3O_14RIM42VRqHDOn9bmxPmP6jPp1rTyIDZc43jlPYL65RAeZEvywmoY0ce-VE3PWtnEQ7cfS4FUiB1BiABGaWexPTPN5Dosw3AB4yWtdoy1I9q-UNAiTMhmP4bO3BSL-MVdiGKUPsI1Nio89ztnWK-oKwK-RVb9HAotXO9MbyniqMNFwSUPtW3s1AjL1jlXLaV1omMp8S-9f23_FqBsE2GS0e9ikHtiPsP6iAOry0OfOEv-b3k9cZrKuWTWGHpgXkxnCYps7rNTm11PoGaUzXcfYYb9Gfsek5s2Yos'; // Tu API Key de MailerLite
 
- 
-
 // IDs de grupos en MailerLite (crea estos grupos y pega sus IDs)
-
 var GRUPOS = {
+  // Grupo general — todas las aplicaciones
+  general: '186416148445660928',
 
   // Por tipo de negocio
-
   producto:   '186844029168649890',
-
   servicios:  '186844063467570294',
-
   ambos:      '186844072730691167',
 
- 
-
   // Por facturación
-
   fact_menos80k:   '186844089506858591',
-
   fact_80_200k:    '186844112383641335',
-
   fact_200_1m:     '186844126006740061',
-
   fact_mas1m:      '186844139806000851',
 
- 
-
   // Por disposición de inversión
-
   inv_lista:        '186844179996869702',
-
   inv_plan_pagos:   '186844196740531777',
-
   inv_no_puede:     '186844204726486216'
-
 };
-
 // ─────────────────────────────────────────────
 
- 
-
 var cur = 1, T = 4;
-
 var sel = { ca: null, tn: null, fa: null, inv: null, ic: null };
 
- 
-
 function dots() {
-
   var s = document.getElementById('si'); s.innerHTML = '';
-
   for (var i = 1; i <= T; i++) {
-
     var d = document.createElement('div');
-
     d.className = 'sd' + (i === cur ? ' a' : i < cur ? ' d' : '');
-
     s.appendChild(d);
-
   }
-
 }
-
 function prog(n) { document.getElementById('pb').style.width = (n > T ? 100 : Math.round(n / T * 100)) + '%'; }
-
 function show(n) {
-
   for (var i = 1; i <= 5; i++) { var el = document.getElementById('s' + i); if (el) el.classList.remove('on'); }
-
   var t = document.getElementById('s' + n); if (t) t.classList.add('on');
-
   cur = n; dots(); prog(n); window.scrollTo(0, 0);
-
 }
-
- 
 
 function pick(gp, id, val) {
-
   var ids = {
-
     ca: ['ca1','ca2','ca3'],
-
     tn: ['tn1','tn2','tn3'],
-
     fa: ['fa1','fa2','fa3','fa4'],
-
     inv: ['in1','in2','in3'],
-
     ic: ['ic1','ic2','ic3']
-
   };
-
   var group = ids[gp];
-
   if (group) { for (var i = 0; i < group.length; i++) { var el = document.getElementById(group[i]); if (el) el.classList.remove('sel'); } }
-
   var picked = document.getElementById(id); if (picked) picked.classList.add('sel');
-
   sel[gp] = val;
-
   var fmap = { ca:'fca', tn:'ftn', fa:'ffa', inv:'fin', ic:'fic' };
-
   var fg = document.getElementById(fmap[gp]); if (fg) fg.classList.remove('err');
-
 }
-
- 
 
 function bindR(gp, ids, vals) {
-
   for (var i = 0; i < ids.length; i++) {
-
     (function(id, val, g) {
-
       var el = document.getElementById(id);
-
       if (el) el.addEventListener('click', function() { pick(g, id, val); });
-
     })(ids[i], vals[i], gp);
-
   }
-
 }
-
- 
 
 bindR('ca', ['ca1','ca2','ca3'], ['Socia-fundadora o CEO','C-Level, Directora o VP','Gerente Intermedio u otra']);
-
 bindR('tn', ['tn1','tn2','tn3'], ['Producto','Servicios','Ambos']);
-
 bindR('fa', ['fa1','fa2','fa3','fa4'], ['Menos de $80,000 USD','$80,000 – $200,000 USD','$200,000 – $1,000,000 USD','Más de $1M USD']);
-
 bindR('inv', ['in1','in2','in3'], ['Sí, lista para invertir USD 3,000','Sí, en plan de pagos','En este momento no me es posible invertir']);
-
 bindR('ic',  ['ic1','ic2','ic3'], ['¡Mañana!','En un par de semanas','El próximo mes']);
 
- 
-
 function gv(id) { var e = document.getElementById(id); return e ? e.value.trim() : ''; }
-
 function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 
- 
-
 function vld(n) {
-
   var ok = true;
-
   function ct(id, fid) { var fg = document.getElementById(fid); if (fg) { if (!gv(id)) { fg.classList.add('err'); ok = false; } else fg.classList.remove('err'); } }
-
   function ce(id, fid) { var fg = document.getElementById(fid); if (fg) { if (!isEmail(gv(id))) { fg.classList.add('err'); ok = false; } else fg.classList.remove('err'); } }
-
   function cr(gp, fid) { var fg = document.getElementById(fid); if (fg) { if (!sel[gp]) { fg.classList.add('err'); ok = false; } else fg.classList.remove('err'); } }
-
   if (n === 1) { ct('nb','fnb'); ce('em','fem'); ct('wa','fwa'); cr('ca','fca'); }
-
   if (n === 2) { cr('tn','ftn'); ct('dn','fdn'); cr('fa','ffa'); }
-
   if (n === 3) { ct('ag','fag'); ct('ex','fex'); }
-
   if (n === 4) { cr('inv','fin'); cr('ic','fic'); }
-
   return ok;
-
 }
-
- 
 
 function go(n) { if (n > cur && !vld(cur)) return; show(n); }
 
- 
-
 document.getElementById('b1').addEventListener('click', function() { go(2); });
-
 document.getElementById('b2b').addEventListener('click', function() { go(1); });
-
 document.getElementById('b2').addEventListener('click', function() { go(3); });
-
 document.getElementById('b3b').addEventListener('click', function() { go(2); });
-
 document.getElementById('b3').addEventListener('click', function() { go(4); });
-
 document.getElementById('b4b').addEventListener('click', function() { go(3); });
-
 document.getElementById('b4').addEventListener('click', function() { send(); });
 
- 
-
 // Determinar grupos según respuestas
-
 function getGroups() {
-
   var groups = [];
 
- 
+  // Grupo general — siempre se agrega
+  if (GRUPOS.general && GRUPOS.general.indexOf('ID_GRUPO') === -1) groups.push(GRUPOS.general);
 
   // Por tipo de negocio
-
   if (sel.tn === 'Producto')   groups.push(GRUPOS.producto);
-
   if (sel.tn === 'Servicios')  groups.push(GRUPOS.servicios);
-
   if (sel.tn === 'Ambos')      groups.push(GRUPOS.ambos);
 
- 
-
   // Por facturación
-
   if (sel.fa === 'Menos de $80,000 USD')        groups.push(GRUPOS.fact_menos80k);
-
   if (sel.fa === '$80,000 – $200,000 USD')       groups.push(GRUPOS.fact_80_200k);
-
   if (sel.fa === '$200,000 – $1,000,000 USD')    groups.push(GRUPOS.fact_200_1m);
-
   if (sel.fa === 'Más de $1M USD')               groups.push(GRUPOS.fact_mas1m);
 
- 
-
   // Por inversión
-
-  if (sel.inv === 'Sí, lista para invertir USD 3,000')   groups.push(GRUPOS.inv_lista);
-
-  if (sel.inv === 'Sí, en plan de pagos')                groups.push(GRUPOS.inv_plan_pagos);
-
+  if (sel.inv === 'Sí, lista para invertir USD 3,000')        groups.push(GRUPOS.inv_lista);
+  if (sel.inv === 'Sí, en plan de pagos')                     groups.push(GRUPOS.inv_plan_pagos);
   if (sel.inv === 'En este momento no me es posible invertir') groups.push(GRUPOS.inv_no_puede);
 
- 
-
-  // Filtrar IDs vacíos o no configurados
-
+  // Filtrar IDs no configurados
   return groups.filter(function(g) { return g && g.indexOf('ID_GRUPO') === -1; });
-
 }
 
- 
-
 async function send() {
-
   if (!vld(4)) return;
-
   var btn = document.getElementById('b4'), ae = document.getElementById('ae');
-
   btn.disabled = true; btn.textContent = 'Enviando...'; ae.style.display = 'none';
-
- 
 
   var grupos = getGroups();
 
- 
-
   var payload = {
-
     email: gv('em'),
-
     fields: {
-
       name:                gv('nb'),
-
       whatsapp:            gv('wa'),
-
+      instagram_web:       gv('igweb'),
       cargo:               sel.ca || '',
-
       tipo_negocio:        sel.tn || '',
-
       descripcion_negocio: gv('dn'),
-
       facturacion_anual:   sel.fa || '',
-
       mueve_la_aguja:      gv('ag'),
-
       exito_3_meses:       gv('ex'),
-
       inversion_dispuesta: sel.inv || '',
-
       cuando_empezar:      sel.ic || ''
-
     },
-
     status: 'active'
-
   };
-
- 
 
   if (grupos.length > 0) payload.groups = grupos;
 
- 
-
   try {
-
     var r = await fetch('https://connect.mailerlite.com/api/subscribers', {
-
       method: 'POST',
-
       headers: {
-
         'Content-Type': 'application/json',
-
         'Accept': 'application/json',
-
         'Authorization': 'Bearer ' + AK
-
       },
-
       body: JSON.stringify(payload)
-
     });
-
     if (r.ok || r.status === 201 || r.status === 200) {
-
       show(5);
-
     } else {
-
       var err = await r.json();
-
       console.error('MailerLite error:', err);
-
       ae.style.display = 'block';
-
       btn.disabled = false;
-
       btn.textContent = 'Enviar aplicación';
-
     }
-
   } catch(e) {
-
     console.error('Error de red:', e);
-
     ae.style.display = 'block';
-
     btn.disabled = false;
-
     btn.textContent = 'Enviar aplicación';
-
   }
-
 }
 
- 
-
 dots(); prog(1);
-
 </script>
-
 </body>
-
 </html>
